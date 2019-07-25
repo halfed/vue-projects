@@ -5,7 +5,7 @@
     <div>
       <ul>
         <li v-for="user in users">
-          {{user.firstname}} {{user.lastname}}
+          {{user.firstname}} {{user.lastname}} test
         </li>
       </ul>
     </div>
