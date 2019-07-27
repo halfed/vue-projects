@@ -19,7 +19,7 @@
 
     <hr />
     <div>
-      <button class="btn btn-primary" v-on:click="count">
+      <button type="button" class="button btn btn-primary" v-on:click="count">
         You've clicked this button {{counter}} times!
       </button>
     </div>
