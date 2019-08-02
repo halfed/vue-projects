@@ -1,7 +1,6 @@
 <template>
-  <div id="app" class="grid-container fluid">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div id="app" class="app-container">
+    <router-view></router-view>
   </div>
 </template>
 
@@ -14,13 +13,8 @@ export default {
 
 <style lang="scss">
 @import './styles/main';
-// #app {
-
-//   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   text-align: center;
-//   color: #2c3e50;
-//   margin-top: 60px;
-// }
+.app-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
 </style>

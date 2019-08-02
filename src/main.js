@@ -1,8 +1,14 @@
-import Vue from 'vue'
-import App from './App'
-import router from './router'
+import Vue from 'vue';
+import App from './App';
+import router from './router';
+import components from './components';
+import ability from '@/controllers/ability';
+import { abilitiesPlugin } from '@casl/vue';
 
-Vue.config.productionTip = false
+components.forEach(component => Vue.component(component.name, component));
+
+Vue.config.productionTip = false;
+Vue.use(abilitiesPlugin, ability);
 
 /* eslint-disable no-new */
 new Vue({
