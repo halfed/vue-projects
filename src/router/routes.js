@@ -26,8 +26,13 @@ export default [
     	  },
         {
           path: '/slot-project',
-          name: 'Casl Project',
+          name: 'Slot Project',
           component: views.SlotProject
+        },
+        {
+          path: '/calculator',
+          name: 'Calculator',
+          component: views.Calculator
         }
       ]
     },

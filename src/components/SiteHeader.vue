@@ -13,6 +13,7 @@
               <router-link v-bind:to="'computed-properties'">Computed Properties</router-link>
               <router-link v-bind:to="'vuex'">Vuex</router-link>
               <router-link v-bind:to="'services'">Services</router-link>
+              <router-link v-bind:to="'calculator'">Calculator</router-link>
             </li>
           </ul>
         </li>
