@@ -2,6 +2,7 @@
 	<div>
 		<h1>Calculator</h1>
 		<h2>In Progress</h2>
+		<p>This calculator project was based on this <a href="https://daveceddia.com/react-practice-projects/" target="_blank">project</a>. I'm using slots for practics but would be better using a child component with v-for</p>
 		<div class="calculator-container">
 			<screen 
 				:outPut=screenOutput
