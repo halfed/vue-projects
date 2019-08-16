@@ -27,53 +27,61 @@
 		data() {
 			return {
 				screenOutput: "",
-				initialInput: "",
-				hasOperator: true,
-				operator: "",
-				secondaryInput: ""
+				internalInput: "",
+				hasOperator: false,
+				hasInitialNonZeroOperator: false,
+				triggerEvaluate: false
 			}
 		},
 		methods: {
 			getInput(value) {
-				this.screenOutput += value;
-				if(this.hasOperator) {
-					this.initialInput += value;
-					this.hasOperator = false;
- 				} else {
-					this.secondaryInput = this.initialInput;
+				if(parseInt(value) > 0) {
+					this.hasInitialNonZeroOperator = true;
 				}
+				
+				if(this.hasInitialNonZeroOperator) {
+					this.screenOutput += value;
+					this.internalInput += value;
+					this.hasOperator = true;
+					this.triggerEvaluate = true;
+ 				}
 			},
 			clearScreen() {
 				this.screenOutput = "";
-				this.initialInput = "";
-				this.hasOperator = true;
+				this.internalInput = "";
+				this.hasOperator = false;
+				this.hasInitialNonZeroOperator = false;
 			},
 			getOperator(value) {
-				if(!this.hasOperator) {
+				if(this.hasOperator) {
 					switch(value) {
 						case 'divide':
 						this.screenOutput += "&divide;";
-						this.initialInput += "/";
+						this.internalInput += "/";
 						break;
 						case 'minus':
 						this.screenOutput += "&minus;";
-						this.initialInput += "-";
+						this.internalInput += "-";
 						break;
 						case 'plus':
 						this.screenOutput += "&plus;";
-						this.initialInput += "+";
+						this.internalInput += "+";
 						break;
 						case 'multiply':
 						this.screenOutput += "&times;";
-						this.initialInput += "*";
+						this.internalInput += "*";
 						break;
 					}
-					this.hasOperator = true;
+					this.hasOperator = false;
+					this.triggerEvaluate = false;
 				}
 			},
 			evaluateExpression() {
-				this.screenOutput = eval(this.initialInput).toString();
-				this.initialInput = eval(this.initialInput).toString();
+				if(this.triggerEvaluate) {
+					this.screenOutput = eval(this.internalInput).toString();
+					this.internalInput = eval(this.internalInput).toString();
+				}
+				
 			}
 		}
 	}
