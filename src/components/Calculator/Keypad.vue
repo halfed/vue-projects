@@ -2,8 +2,13 @@
 	<div class="key-pad">
 		<table width="100%">
 			<tr>
-				<td colspan=75 class="left-border">Clear</td>
-				<td colspan=25>&#247;</td>
+				<td colspan=75 class="left-border" @click="clearOutputScreen">Clear</td>
+				<input-slot
+					:colSpan='25'
+					:val=operator.divide
+					@childInputClickHandler="getOperatorType"
+					:classType="leftBorder"
+				>&#247;</input-slot>
 			</tr>
 			<tr>
 				<input-slot
@@ -22,7 +27,12 @@
 					:val=9
 					@childInputClickHandler="getSlotInput"
 				>9</input-slot>
-				<td colspan=25>&#8722;</td>
+				<input-slot
+					:colSpan='25'
+					:val=operator.minus
+					@childInputClickHandler="getOperatorType"
+					:classType="leftBorder"
+				>&#8722;</input-slot>
 			</tr>
 			<tr>
 				<input-slot
@@ -41,7 +51,12 @@
 					:val=6
 					@childInputClickHandler="getSlotInput"
 				>6</input-slot>
-				<td colspan=25>&#43;</td>
+				<input-slot
+					:colSpan='25'
+					:val=operator.plus
+					@childInputClickHandler="getOperatorType"
+					:classType="leftBorder"
+				>&#43;</input-slot>
 			</tr>
 			<tr>
 				<input-slot
@@ -60,7 +75,7 @@
 					:val=3
 					@childInputClickHandler="getSlotInput"
 				>3</input-slot>
-				<td colspan=25>&equals;</td>
+				<td colspan=25 @click="evaluate">&equals;</td>
 			</tr>
 		</table>
 	</div>
@@ -72,12 +87,27 @@
 		props: ['onClick'],
 		data() {
 			return {
-				leftBorder: 'left-border'
+				leftBorder: 'left-border',
+				operator: {
+					divide: "divide",
+					minus: "minus",
+					plus: "plus",
+					multiply: "multiply"
+				}
 			}
 		},
 		methods: {
 			getSlotInput(value) {
 				this.$emit('inputClickHandler', value);
+			},
+			clearOutputScreen() {
+				this.$emit('clearClickHandler');
+			},
+			getOperatorType(value) {
+				this.$emit('operatorClickHandler', value);
+			},
+			evaluate() {
+				this.$emit('evaluatorClickHandler');
 			}
 		}
 	}

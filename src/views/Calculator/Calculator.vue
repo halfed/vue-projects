@@ -9,7 +9,12 @@
 			/>
 			<div class="user-inputs grid-x">
 				<div class="cell small-12">
-					<key-pad @inputClickHandler="getInput" />
+					<key-pad 
+						@inputClickHandler="getInput"
+						@clearClickHandler="clearScreen"
+						@operatorClickHandler="getOperator"
+						@evaluatorClickHandler="evaluateExpression"
+					/>
 				</div>
 			</div>
 		</div>
@@ -21,12 +26,55 @@
 		name: 'calculator',
 		data() {
 			return {
-				screenOutput: ""
+				screenOutput: "",
+				initialInput: "",
+				hasOperator: true,
+				operator: "",
+				secondaryInput: ""
 			}
 		},
 		methods: {
 			getInput(value) {
 				this.screenOutput += value;
+				if(this.hasOperator) {
+					this.initialInput += value;
+					this.hasOperator = false;
+ 				} else {
+					this.secondaryInput = this.initialInput;
+				}
+				
+			},
+			clearScreen() {
+				this.screenOutput = "";
+				this.initialInput = "";
+				this.hasOperator = true;
+			},
+			getOperator(value) {
+				if(!this.hasOperator) {
+					switch(value) {
+						case 'divide':
+						this.screenOutput += "&divide;";
+						this.initialInput += "/";
+						break;
+						case 'minus':
+						this.screenOutput += "&minus;";
+						this.initialInput += "-";
+						break;
+						case 'plus':
+						this.screenOutput += "&plus;";
+						this.initialInput += "+";
+						break;
+						case 'multiply':
+						this.screenOutput += "&multiply;";
+						this.initialInput += "*";
+						break;
+					}
+					this.hasOperator = true;
+				}
+			},
+			evaluateExpression() {
+				this.screenOutput = eval(this.initialInput).toString();
+				this.initialInput = eval(this.initialInput).toString();
 			}
 		}
 	}

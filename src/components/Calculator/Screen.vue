@@ -1,6 +1,6 @@
 <template>
-	<div class="screen">
-		{{ outPut }}
+	<div class="screen" v-html="outPut">
+
 	</div>
 </template>
 
