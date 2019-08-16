@@ -42,7 +42,6 @@
  				} else {
 					this.secondaryInput = this.initialInput;
 				}
-				
 			},
 			clearScreen() {
 				this.screenOutput = "";
@@ -65,7 +64,7 @@
 						this.initialInput += "+";
 						break;
 						case 'multiply':
-						this.screenOutput += "&multiply;";
+						this.screenOutput += "&times;";
 						this.initialInput += "*";
 						break;
 					}

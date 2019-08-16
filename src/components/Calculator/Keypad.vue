@@ -29,10 +29,10 @@
 				>9</input-slot>
 				<input-slot
 					:colSpan='25'
-					:val=operator.minus
+					:val=operator.multiply
 					@childInputClickHandler="getOperatorType"
 					:classType="leftBorder"
-				>&#8722;</input-slot>
+				>&times;</input-slot>
 			</tr>
 			<tr>
 				<input-slot
@@ -53,10 +53,10 @@
 				>6</input-slot>
 				<input-slot
 					:colSpan='25'
-					:val=operator.plus
+					:val=operator.minus
 					@childInputClickHandler="getOperatorType"
 					:classType="leftBorder"
-				>&#43;</input-slot>
+				>&minus;</input-slot>
 			</tr>
 			<tr>
 				<input-slot
@@ -75,6 +75,20 @@
 					:val=3
 					@childInputClickHandler="getSlotInput"
 				>3</input-slot>
+				<input-slot
+					:colSpan='25'
+					:val=operator.plus
+					@childInputClickHandler="getOperatorType"
+					:classType="leftBorder"
+				>&#43;</input-slot>
+			</tr>
+			<tr>
+				<input-slot
+					:colSpan=75
+					:val=0
+					:classType="leftBorder"
+					@childInputClickHandler="getSlotInput"
+				>0</input-slot>
 				<td colspan=25 @click="evaluate">&equals;</td>
 			</tr>
 		</table>
