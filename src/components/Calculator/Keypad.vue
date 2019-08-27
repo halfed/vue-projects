@@ -4,34 +4,34 @@
 			<tr>
 				<td colspan=75 class="left-border" @click="clearOutputScreen">Clear</td>
 				<input-slot
-					:colSpan='25'
-					:val=operator.divide
+					:colSpan="25"
+					:val="operator.divide"
+					:classType="['action-button']"
 					@childInputClickHandler="getOperatorType"
-					:classType="leftBorder"
 				>&#247;</input-slot>
 			</tr>
 			<tr>
 				<input-slot
-					:colSpan=25
-					:val=7
+					:colSpan="25"
+					:val="7"
 					@childInputClickHandler="getSlotInput"
 					:classType="leftBorder"
 				>7</input-slot>
 				<input-slot
-					:colSpan=25
-					:val=8
+					:colSpan="25"
+					:val="8"
 					@childInputClickHandler="getSlotInput"
 				>8</input-slot>
 				<input-slot
-					:colSpan=25
-					:val=9
+					:colSpan="25"
+					:val="9"
 					@childInputClickHandler="getSlotInput"
 				>9</input-slot>
 				<input-slot
-					:colSpan='25'
-					:val=operator.multiply
+					:colSpan="25"
+					:val="operator.multiply"
+					:classType="['action-button']"
 					@childInputClickHandler="getOperatorType"
-					:classType="leftBorder"
 				>&times;</input-slot>
 			</tr>
 			<tr>
@@ -54,8 +54,8 @@
 				<input-slot
 					:colSpan='25'
 					:val=operator.minus
+					:classType="['action-button']"
 					@childInputClickHandler="getOperatorType"
-					:classType="leftBorder"
 				>&minus;</input-slot>
 			</tr>
 			<tr>
@@ -78,8 +78,8 @@
 				<input-slot
 					:colSpan='25'
 					:val=operator.plus
+					:classType="['action-button']"
 					@childInputClickHandler="getOperatorType"
-					:classType="leftBorder"
 				>&#43;</input-slot>
 			</tr>
 			<tr>
@@ -89,7 +89,7 @@
 					:classType="leftBorder"
 					@childInputClickHandler="getSlotInput"
 				>0</input-slot>
-				<td colspan=25 @click="evaluate">&equals;</td>
+				<td colspan=25 class="action-button" @click="evaluate">&equals;</td>
 			</tr>
 		</table>
 	</div>

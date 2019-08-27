@@ -1,3 +1,15 @@
 @import 'settings';
 @import '~foundation-sites/scss/foundation';
 @include foundation-everything;
+
+.calculator-container {
+	.action-button {
+		background-color: $calc-action-button;
+		color: $white;
+
+		&:hover, &:focus {
+			    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+			    //background-color: #FFF;
+		}
+	}
+}
